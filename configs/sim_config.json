@@ -1,0 +1,23 @@
+{
+  "total_epochs": 20,
+  "drep_count": 100,
+  "governance_actions_per_epoch": [
+    5,
+    15
+  ],
+  "total_ada_delegated": 1000000000,
+  "delegation_change_rate": 0.05,
+  "veto_probability": 0.05,
+  "drep_type_distribution": {
+    "Professional": 0.2,
+    "Hobbyist": 0.4,
+    "Passive": 0.3,
+    "Strategic": 0.1
+  },
+  "initial_delegation_distribution": "pareto",
+  "delegation_distribution_params": {
+    "alpha": 1.5
+  },
+  "peer_evaluation_sample_size": 5,
+  "random_seed": 42
+}

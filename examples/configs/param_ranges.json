@@ -1,0 +1,12 @@
+{
+    "w1_delegation": [0.05, 0.4],
+    "w2_participation": [0.1, 0.5],
+    "w3_successful_votes": [0.05, 0.4],
+    "w4_veto_penalty": [0.01, 0.2],
+    "w5_decentralization": [0.05, 0.3],
+    "w6_peer_evaluation": [0.05, 0.3],
+    "w7_community_engagement": [0.01, 0.2],
+    "total_reward_per_epoch": [50000, 200000],
+    "veto_penalty_factor": [0.1, 1.0],
+    "min_participation_threshold": [0.05, 0.3]
+  }
