@@ -38,7 +38,7 @@ python quickstart.py
 
 ```bash
 # Clone the repository
-git clone https://github.com/username/drepsim.git
+git clone  https://github.com/Cardano-After-Dark/DRep_Incentives_modeling.git
 cd drepsim
 
 # Create and activate virtual environment
