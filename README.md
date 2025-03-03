@@ -27,7 +27,7 @@ The DRep Simulation Framework allows researchers, governance designers, and bloc
 
 ```bash
 # Clone the repository
-git clone https://github.com/username/drepsim.git
+git clone https://github.com/Cardano-After-Dark/DRep_Incentives_modeling.git
 cd drepsim
 
 # Run the quickstart script
@@ -137,7 +137,7 @@ The framework is organized into several key components:
 - **Visualization**: Functions to generate plots and visualizations
 - **CLI Interface**: Command-line interface for easy execution
 
-![Architecture Diagram](architecture.png)
+![Architecture Diagram](architecture.md)
 
 ## 📘 Documentation
 
