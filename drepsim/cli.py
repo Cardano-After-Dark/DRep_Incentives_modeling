@@ -199,7 +199,8 @@ def create_incentive_parameters(config: Dict[str, Any]) -> IncentiveParameters:
         w7_community_engagement=config.get("w7_community_engagement", 0.05),
         total_reward_per_epoch=config.get("total_reward_per_epoch", 100000),
         veto_penalty_factor=config.get("veto_penalty_factor", 0.5),
-        min_participation_threshold=config.get("min_participation_threshold", 0.1)
+        min_participation_threshold=config.get("min_participation_threshold", 0.1),
+        model_type=config.get("model_type", "linear")
     )
 
 

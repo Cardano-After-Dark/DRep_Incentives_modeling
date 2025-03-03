@@ -51,3 +51,8 @@ htmlcov/
 # Local development settings
 local_settings.py
 db.sqlite3
+
+results/
+example_results/
+monte_carlo_results/
+

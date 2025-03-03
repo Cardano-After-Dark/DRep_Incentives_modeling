@@ -378,15 +378,23 @@ def generate_governance_actions(
 
 def run_epoch(
     state: SimulationState,
-    incentives: IncentiveParameters,
+    incentive_params: IncentiveParameters,
     sim_params: SimulationParameters
 ) -> SimulationState:
     """
-    Run a single epoch of the simulation.
+    Run a single simulation epoch.
+    
+    This function:
+    1. Creates new governance actions
+    2. Collects votes from DReps
+    3. Processes votes and determines outcomes
+    4. Calculates rewards and updates scores
+    5. Updates delegations based on performance
+    6. Updates DRep strategies
     
     Args:
         state: Current simulation state
-        incentives: Incentive parameters
+        incentive_params: Incentive parameters
         sim_params: Simulation parameters
         
     Returns:
@@ -420,7 +428,7 @@ def run_epoch(
         
         for action_id in active_action_ids:
             action = state.actions[action_id]
-            choice, effort = drep.decide_vote(action, incentives)
+            choice, effort = drep.decide_vote(action, incentive_params)
             
             if choice is not None:  # DRep decided to vote
                 actions_voted += 1
@@ -461,7 +469,7 @@ def run_epoch(
     
     for drep_id, drep in state.dreps.items():
         # Each DRep evaluates peers
-        drep_evaluations = drep.evaluate_peers(votes, incentives)
+        drep_evaluations = drep.evaluate_peers(votes, incentive_params)
         evaluations.extend(drep_evaluations)
         
         # Calculate average peer score received
@@ -490,8 +498,13 @@ def run_epoch(
     
     state.community_engagements[epoch] = community_engagements
     
-    # Calculate rewards based on incentive model
-    scores, rewards = calculate_rewards(state, incentives, epoch)
+    # Calculate rewards using the specified incentive model
+    scores, rewards = calculate_rewards(
+        state, 
+        incentive_params, 
+        epoch, 
+        model_name=incentive_params.model_type
+    )
     
     # Store rewards and update DRep histories
     state.rewards[epoch] = rewards

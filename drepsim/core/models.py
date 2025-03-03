@@ -466,18 +466,6 @@ class IncentiveParameters:
     """
     Parameters defining the incentive model for rewarding DReps.
     
-    Mathematical notation:
-    ---------------------
-    DRep_Score = w₁ × Delegation_Ratio + 
-                 w₂ × Participation_Rate + 
-                 w₃ × Successful_Votes_Ratio - 
-                 w₄ × Veto_Penalty + 
-                 w₅ × Decentralization_Score + 
-                 w₆ × Peer_Evaluation_Score + 
-                 w₇ × Community_Engagement_Score
-    
-    DRep_Reward = (DRep_Score / Sum_of_All_DRep_Scores) × Total_Reward_Pool
-    
     Attributes:
         w1_delegation: Weight for delegation ratio
         w2_participation: Weight for participation rate
@@ -489,6 +477,7 @@ class IncentiveParameters:
         total_reward_per_epoch: Total ADA to distribute per epoch
         veto_penalty_factor: How much a veto reduces score
         min_participation_threshold: Minimum participation to get rewards
+        model_type: The type of incentive model to use
     """
     # Weight parameters
     w1_delegation: float  # Weight for delegation ratio
@@ -503,6 +492,9 @@ class IncentiveParameters:
     total_reward_per_epoch: float  # Total ADA to distribute per epoch
     veto_penalty_factor: float  # How much a veto reduces score
     min_participation_threshold: float  # Minimum participation to get rewards
+    
+    # Model selection (with default value - must come after non-default parameters)
+    model_type: str = "linear"  # "linear", "non_linear", "temporal", "game_theory"
     
     def __post_init__(self):
         """Normalize weights to sum to 1.0."""
