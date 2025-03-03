@@ -150,9 +150,6 @@ def print_next_steps():
 To activate the virtual environment:
     {activate_str}
 
-To run a basic simulation:
-    drepsim simulate --sim-config configs/sim_config.json --incentive-config configs/incentive_config.json --visualize
-
 To run an example script:
     python examples/basic_simulation.py
 
