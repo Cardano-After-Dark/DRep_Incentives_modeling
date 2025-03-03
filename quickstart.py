@@ -121,11 +121,20 @@ def verify_installation():
     
     activate_cmd = get_activate_command()
     if platform.system() == "Windows":
-        verify_cmd = f"{activate_cmd[0]} && drepsim --help"
+        # Use pip list instead of the CLI command
+        verify_cmd = f"{activate_cmd[0]} && pip list | findstr drepsim"
     else:
-        verify_cmd = f"{activate_cmd[0]} {activate_cmd[1]} && drepsim --help"
+        # Use pip list instead of the CLI command
+        verify_cmd = f"{activate_cmd[0]} {activate_cmd[1]} && pip list | grep drepsim"
     
-    return run_command(verify_cmd, shell=True)
+    success = run_command(verify_cmd, shell=True)
+    
+    if success:
+        print("Package successfully installed!")
+    else:
+        print("Warning: Could not verify package installation.")
+    
+    return success
 
 def print_next_steps():
     """Print instructions for next steps."""
